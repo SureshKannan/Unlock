@@ -16,3 +16,11 @@
 //= require respond
 //= require turbolinks
 //= require_tree .
+function doPlayPause()
+{
+  if ($("idAdvt").paused)
+    $("idAdvt").play();
+  else
+    $("idAdvt").pause();
+}
+
