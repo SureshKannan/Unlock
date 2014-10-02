@@ -1,18 +1,31 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-#nav-top ul {
-  list-style-type: none;
+#test{border: 1px solid green;}
+.container{
+  margin-top: 20px;
+}
+header{
+  //border: 1px solid red; 
+  background-color: #E8CCE6;
 }
 
-#menubar {
-  position: relative;
+
+#nav-top {
+//border: 1px solid green;  
+margin-top: 10px;
+}
+.breadcrumb > li + li:before {
+  
+  content: none;
+}
+.breadcrumb > li {
+  padding: 10px;
+  
 }
 
-.mainBox {
-    border: solid thin black;
-}
+.dropdown-menu{margin-top: -15px;}
+
 
 
 #title {
@@ -26,4 +39,10 @@
 
 .padding2em {
   padding-top:2em;
+}
+#videos{
+  
+}
+#imei{
+ 
 }
