@@ -9,14 +9,70 @@
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 		<%= csrf_meta_tags %>
+	
+	
+	<script>
+		function isIMEI(){
+	
+	//alert(document.getElementByName('imei').value);
+	//alert(document.getElementById('imel').value);
+
+	s=(document.getElementById('imel').value);
+	alert(s.length);
+	if(s){alert("s.length");}
+	else
+	alert("empty");
+	//alert(s);
+	//alert(isNumber(s));
+//if(/\S+/.test(s)){alert("Empty")}
+ // if(!/^[0-9]{15}$/.test(s)){alert("Empty" );}
+  // sum = 0; mul = 2; l = 14;
+  // for (i = 0; i < l; i++) {
+    // digit = s.substring(l-i-1,l-i);
+    // tp = parseInt(digit,10)*mul;
+    // if (tp >= 10)
+         // sum += (tp % 10) +1;
+    // else
+         // sum += tp;
+    // if (mul == 1)
+         // mul++;
+    // else
+         // mul--;
+    // }
+  // chk = ((10 - (sum % 10)) % 10);
+  // alert("chk " + chk);
+  // if (chk != parseInt(s.substring(14,15),10))
+    // {return false;
+    	// alert("False");
+    	// }
+    	// alert("True");
+  // return true;
+}
+function isEmpty (str) {
+  
+}
+
+
+function isNumber(str){
+	var pattern = /^\d {15}+$/;
+	return pattern.test(str);
+}
+
+	</script>
 	</head>
 	<body class="container-fluid container">
 		<header class="row ">
 
-			<div class="col-sm-2 col-md-4">
-				<a href="#"><img id="logo" src="/assets/unlock_violet_logo1.jpg"/></a><span id="title">Unlock</span>
+			<div class="col-sm-2 col-md-2">
+				<a href="#"><img id="logo" src="/assets/icon/unlock_violet_icon22.jpg"/>
+					
+				<!-- </a><span id="title">Unlock</span> -->
 			</div>
-			<div id="nav-top" class="col-sm-10 col-md-8 ">
+			<div class="col-sm-6 col-md-6">
+				<img id="logo1" src="/assets/icon/unlock_violet1.jpg"/>
+				
+			</div>
+			<div id="nav-top" class="col-sm-4 col-md-4 ">
 				<ol class="breadcrumb pull-right" style="margin-top: 15px;">
 					<li>
 						<a id="myaccount" class="" href="#">My account</a>
@@ -46,4 +102,56 @@
 		<%= yield %>
 
 	</body>
+	<script>
+		
+function Calculate(Luhn)
+{
+	//alert("Calculate");
+	var sum = 0;
+	for (i=0; i < Luhn.length; i++)
+	{
+		sum += parseInt(Luhn.substring(i, i+1));
+	}
+	//alert(" sum " + sum);
+	var delta = new Array (0,1,2,3,4,-4,-3,-2,-1,0);
+	for (i=Luhn.length-1; i>=0; i-=2)
+	
+	{ 
+		var deltaIndex = parseInt(Luhn.substring(i,i+1));
+		var deltaValue = delta[deltaIndex];
+		
+		sum += deltaValue;
+	}
+	var mod10 = sum % 10;
+	mod10 = 10 - mod10;
+	if (mod10 == 10){mod10 =0;}
+	alert("Mod10 "+ mod10);
+	return mod10;
+}
+
+
+
+ function Validate()
+ {
+ 	Luhn =(document.getElementById('imel').value);
+ 	//alert("IMEI " +  Luhn);
+ 	var length = Luhn.length;
+ 	//alert("Length "+ length);
+ 	var LuhnDigit = parseInt(Luhn.substring(Luhn.length-1,Luhn.length));
+	//alert("Digit " + LuhnDigit);
+	var LuhnLess = Luhn.substring(0,Luhn.length-1);
+	//alert("Less " + LuhnLess);
+	a=Calculate(LuhnLess);
+	alert("A "+ a);
+	if (a==parseInt(LuhnDigit))
+	{
+		alert("true")
+		return true;
+	}
+	alert("false");
+	return false;
+
+ }
+	
+	</script>
 </html>

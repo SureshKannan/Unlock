@@ -10,12 +10,53 @@
 
 	</div>
 
+</div>
+<div id="ime" class="row padding2em">
+	<!-- <div class="col-md-4" ><h4>Would you like to unlock your phone?</h4></div>
+	<div class="input-group input-group-lg col-md-4">
+	<span class="input-group-addon">IMEI</span>
+	<input type="text" class="form-control" placeholder="Enter your IMEI">
+	<button type="submit" class="btn btn-primary">Submit</button> </div>-->
+
+	<form class="form-inline" id="imeiForm" onsubmit="Validate()" >
+		<div class="col-md-4" >
+			<h4>Would you like to unlock your phone?</h4>
+		</div>
+		<!-- <div class="col-md-1"><span class="input-group-addon">IMEI</span></div> -->
+		<div class="form-group input-group input-group-lg  col-md-4">
+			<span class="input-group-addon">IMEI</span>
+			<label class="sr-only" for="inputImei">IMEI</label>
+			<input type="text" class="form-control" name="imei" id="imel" placeholder="Enter your IMEI">
+		</div>
+		<button type="submit" class="btn btn-primary" value="submit">Submit</button>
+	</form>
 
 </div>
-	<div id="imei" class="row padding2em">
-		<div class="col-md-4" ><h4>Would you like to unlock your phone?</h4></div>
-		<div class="input-group input-group-lg col-md-4">
-			<span class="input-group-addon">IMEI</span>
-			<input type="text" class="form-control" placeholder="Enter your IMEI">
-		</div>
-	</div>
+<script>
+	$(document).ready(function() {
+
+    $('#imeiForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            imei: {
+                validators: {
+                    imei: {
+                        message: 'The value is not valid IMEI'
+                    },
+                    notEmpty: {
+                    	enabled: true
+                    }
+                }
+            }
+        }
+    });
+    
+    
+})
+
+
+</script>
