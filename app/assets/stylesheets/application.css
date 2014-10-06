@@ -16,6 +16,10 @@
  *= require_self
  */
 
+.navbar-white {
+	background-color: white;
+}
+
 
 @font-face {
   font-family: 'Glyphicons Halflings';

@@ -1,35 +1,10 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#test{border: 1px solid green;}
-.container{
-  margin-top: 20px;
-}
-header{
-  //border: 1px solid red; 
-  background-color: #E8CCE6;
-}
-#logo{height: 100px; width: 100px;}
-#logo{height:100px; width: 300px;}
-#nav-top {
-//border: 1px solid green;  
-margin-top: 10px;
-}
-.breadcrumb > li + li:before {
-  
-  content: none;
-}
-.breadcrumb > li {
-  padding: 10px;
-  
-}
-
-.dropdown-menu{margin-top: -15px;}
-
 
 
 #title {
-  font-size:3em;
+  font-size:2em;
   font-weight: bolder;
 }
 
@@ -37,6 +12,9 @@ margin-top: 10px;
   font-weight: bolder;
 }
 
+.padding7em {
+  padding-top:7em;
+}
 .padding2em {
   padding-top:2em;
 }
@@ -45,4 +23,9 @@ margin-top: 10px;
 }
 #imei{
  
+}
+
+.unlockHeader {
+  font-size:2em;
+  font-weight: bolder;
 }

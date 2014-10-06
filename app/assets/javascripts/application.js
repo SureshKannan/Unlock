@@ -17,3 +17,11 @@
 //= require bootstrapValidator.min
 //= require turbolinks
 //= require_tree .
+function doPlayPause()
+{
+  if ($("idAdvt").paused)
+    $("idAdvt").play();
+  else
+    $("idAdvt").pause();
+}
+
