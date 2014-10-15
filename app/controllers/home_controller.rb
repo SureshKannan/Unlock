@@ -1,8 +1,9 @@
 class HomeController < ApplicationController
   def index
-    redirect_to action: 'account'
+    
   end
   def account
-    
+    @countries = Country.all
+    @customer = Customer.new
   end
 end

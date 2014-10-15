@@ -1,23 +1,24 @@
-<%= form_tag({:controller => 'home',:action => "index"},:class=>'form-inline',:method=>:post) do %>
+
 <div class="row padding7em">
-	<p class="text-center unlockHeader">Unlock your phone and get unlimited benefits</p>
+	<div class="col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6">
+	<p class="unlockHeader">Unlock your phone and get unlimited benefits</p>
+	</div>
 </div>
 <div class="row">
 	<div class="col-md-offset-4 col-lg-offset-4 col-md-4 col-lg-4">
-		<!-- <form class="form-inline"> -->
+		<%= form_tag({:controller => 'customers',:action => "index"},:class=>'form-inline',:method=>:post) do %>
 		<input class="form-control input-lg" name="txtImei" type="text" required="required" placeholder="Enter IMEI">
 		<button type="submit" class="btn btn-primary input-lg">Unlock</button>
-		<!-- </form> -->
+		<% end %>
 	 </div>
 </div>		
 <div class="row padding2em">
 	<div class="col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6"">
 		<div class="input-group input-group-lg" onmouseout="doPlayPause()">
 		  <video id="idAdvt" width="100%" height="100%" controls>
-			  <source src="assets/Benefits.mp4" type="video/mp4">
+			  <source src="../assets/Benefits.mp4" type="video/mp4">
 				Your browser does not support the video tag.
 			</video>
 		</div>
 	</div>
 </div>
-<% end %>

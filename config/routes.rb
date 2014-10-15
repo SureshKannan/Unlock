@@ -53,12 +53,20 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  root "home#index"
+
+  # controller :customer do
+     # get "index", to: "customers#index"
+     # post "index", to: "customers#index"
+  # end
   
   controller :home do
-    get  "index", to: "home#index"
-    post "index", to: "home#index"
-    get "account", to: "home#account"
+    get "home/index"
+    post "home/index", to: "customers#index"
   end
+  controller :customers do
+    get "customers", to: "customers#index"
+    post "customers", to: "customers#create"
+  end
+
   
 end

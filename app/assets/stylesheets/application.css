@@ -20,6 +20,13 @@
 .navbar-white {
 	background-color: white;
 }
+.padding2em {
+  padding-top:2em;
+}
+
+.padding1em {
+  padding-top:1em;
+}
 
 
 @font-face {
