@@ -57,5 +57,8 @@ Rails.application.routes.draw do
   
   controller :home do
     get  "index", to: "home#index"
+    post "index", to: "home#index"
+    get "account", to: "home#account"
   end
+  
 end

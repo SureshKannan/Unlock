@@ -1,0 +1,27 @@
+<%= form_tag({:controller => 'home',:action => "account"},:method=>:post) do %>
+<div class="row padding7em">
+	<p class="text-center unlockHeader">Registration</p>
+</div>
+<div class="row">	
+	<div class="col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6">
+		<input class="form-control input-lg col-md-6 col-lg-6" name="txtEmail" type="text" required="required"  placeholder="Email">
+	</div>
+</div>		
+<div class="row">
+	<div class="col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6">
+		<input class="form-control input-lg input-block-level" name="txtFirstName" type="text" required="required" placeholder="First Name">
+	</div>
+</div>	
+<div class="row">
+	<div class="col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6">
+		<input class="form-control input-lg input-block-level" name="txtLastName" type="text" required="required" placeholder="Last Name">
+	</div>
+</div>	
+<div class="row">
+	<div class="col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6">
+		<%= collection_select("user","group_id",@groups,:id,:name,{ :prompt=>'Select group'},{:class=>"form-control",:required=>true})%>
+		<input class="form-control input-lg input-block-level" type="text" required="required" placeholder="Country">
+	</div>
+</div>	
+
+<% end %>
