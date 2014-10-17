@@ -15,7 +15,11 @@ class CustomersController < ApplicationController
     @security.username = @customer.email
     @security.password = params["txtPassword"]
     @security.save
-    CustomerNotifier.send_signup_email(@customer).deliver
+    #CustomerNotifier.send_signup_email(@customer).deliver
+    render "showcart"
+  end
+  def showcart
+    
   end
   private
   def customer_params

@@ -16,7 +16,10 @@
  *= require_self
  */
 
-
+.heading {
+	font-weight: bold;
+	font-size:1.5em;
+}
 .navbar-white {
 	background-color: white;
 }
