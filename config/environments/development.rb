@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -34,4 +34,16 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  #send mail settings
+config.action_mailer.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
+  :user_name => 'skannan@fourus.ca',
+  :password => 'appu431861',
+  :domain => 'fourus.netfirms.com',
+  :address => 'fourus.netfirms.com',
+  :port => 25,
+  :authentication => :plain,
+  :enable_starttls_auto => true,
+  :openssl_verify_mode => 'none'
+}
 end
