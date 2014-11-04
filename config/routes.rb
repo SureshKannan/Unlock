@@ -68,6 +68,8 @@ Rails.application.routes.draw do
     post "customers", to: "customers#create"
     get "customers/showcart"
   end
-
+  controller :products do
+    get "products", to: "products#index"
+  end
   
 end
