@@ -1,29 +1,44 @@
-<%= form_tag({:controller => 'products',:action => "create"},:method=>:post, remote: true) do %>
+<div class="row">
+    <div class="col-lg-2 col-md-2">
+    	<h3>Add Product:</h3>
+    </div>
+    <div class="col-lg-offset-9 col-md-offset-9 col-lg-1 col-md-1">
+    	<div id="cart">
+    		<div id="cartnumber">0</div>
+    	</div>
+    </div>
+</div>
+
+<%= form_tag({:controller => 'products',:action => "create"},:method=>:post) do %>
 	<div class="row text-center">
-	    <div class="col-md-3 col-sm-6 hero-feature">
+	    <div class="col-md-12 col-sm-12 hero-feature">
 	        <div class="thumbnail">
-	            <img src="/assets/products/rogers200x200.jpg" alt="">
+	            <img src="<%=@product.imageurl%>" alt="">
 	            <div class="caption">
-	                <h3>Unlock</h3>
-	                <p>iPhone 4,4S,5,5C,5S,6,6+</p>
-	                <p>
-	                    <a href="/products/1" class="btn btn-primary">Buy Now!</a> <a href="/products/1" class="btn btn-default">More Info</a>
-	                </p>
-	            </div>
-	        </div>
-	    </div>
-	
-	    <div class="col-md-3 col-sm-6 hero-feature">
-	        <div class="thumbnail">
-	            <img src="/assets/products/Bell200x200.jpg" alt="">
-	            <div class="caption">
-	                <h3>Unlock</h3>
-	                <p>4,4S,5,5C,5S,6,6+</p>
-	                <p>
-	                    <a href="/products/2" class="btn btn-primary">Buy Now!</a> <a href="/products/2" class="btn btn-default">More Info</a>
-	                </p>
+	            	<h3><%= @product.description%></h3>
+	                <h1><%= @product.currency.code %> <%= number_to_currency(@product.price,unit: ' ')%></h1>
+	                <h3>Delivery in <%= @product.deliveryterms %> *</h3>
+	                <p>*If we receive your order before 12 pm</p>                
+		            <!-- <span class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6"> -->
+		            <div>
+						<input class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 input-lg" name="txtImei" type="text" required="required" placeholder="Enter IMEI">
+					</div>
+					<div class="clearfix"></div>
+
+					<div class="row">
+						<button type="submit" name="cmdPayNow" class="btn btn-primary input-lg">Add Cart & Checkout</button>
+						<button type="submit" name="cmdContinue" class="btn btn-primary input-lg">Add Cart & Continue Shopping</button>
+					</div>
+
+					
+		            <!-- </span> -->
 	            </div>
 	        </div>
 	    </div>
 	</div>
 <% end %>
+<div class="row">
+    <div class="col-lg-12">
+        <h3>Other similar products:</h3>
+    </div>
+</div>

@@ -16,6 +16,20 @@
  *= require_tree .
  *= require_self
  */
+#cart {
+  background-image: url('../images/cart.png');
+  background-repeat: no-repeat;
+  z-index: -1;
+  height:64px;
+  width:64px;
+}
+#cartnumber {
+	text-align:center;
+	font-size:2.0em;
+	color: blue;
+	font-weight:bolder;
+}
+
 
 .heading {
 	font-weight: bold;
