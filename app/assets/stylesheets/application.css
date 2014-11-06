@@ -12,6 +12,7 @@
  *
  *= require bootstrap.min
  *= require bootstrapValidator.min
+ *= require heroic-features
  *= require_tree .
  *= require_self
  */
