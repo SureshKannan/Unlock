@@ -8,7 +8,7 @@ namespace :bootstrap do
   desc "Currency"
   task :add_default_Currencies => :environment do
     Currency.create(:code=>'USD',:name=>"US Dollar")
-    Currency.create(:name=>"CAD",:name=>"Canadian Dollar")
+    Currency.create(:code=>"CAD",:name=>"Canadian Dollar")
   end
   desc "Customer"
   task :add_default_products => :environment do

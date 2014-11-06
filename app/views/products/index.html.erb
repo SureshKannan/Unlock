@@ -6,7 +6,6 @@
 			<thead>
 				<col width="20%">
 				<tr>
-					
 					<td>Provider</td>
 					<td>Country</td>
 					<td>Rating</td>
@@ -21,7 +20,7 @@
 					<td><img src="<%=p.imageurl%>" alt="logo"/><h5><%= p.description %></h5></td>
 					<td><%= p.country.name %></td>
 					<td><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></span></td>
-					<td><%= p.currency.code %></td>
+					<td><%= p.currency.code %> <%= number_to_currency(p.price,unit: ' ') %></td>
 					<td><%= p.deliveryterms %></td>
 					<td>
 						<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
