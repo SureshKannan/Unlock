@@ -1,0 +1,51 @@
+<div class="row padding7em">
+	<div class="col-md-offset-1 col-lg-offset-1 col-md-4 col-lg-4">
+		<p class="unlockHeader">
+			New User Registration
+		</p>
+	</div>
+	<div class="col-md-offset-2 col-lg-offset-2 col-md-4 col-lg-4">
+		<p class="unlockHeader">
+			Sign In Existing User
+		</p>
+
+	</div>
+</div>
+
+<div class="col-md-6 col-lg-6">
+
+	<section id="userDetails" class=" row padding7em input-group input-group-lg">
+		<%= bootstrap_form_for(@user)  do |f| %>
+
+			<%= f.email_field :email, hide_label: :true, wrapper_class: 'padding1em col-md-offset-2 col-lg-offset-2 col-md-8 col-lg-8 input-group', placeholder: "Email" %>
+
+			<%= f.password_field :password,hide_label: :true, placeholder: 'Password', wrapper_class: 'padding1em col-md-offset-2 col-lg-offset-2 col-md-8 col-lg-8 input-group input-group-lg'  %>
+
+			<%= f.password_field :confirmPassword,hide_label: :true, placeholder: 'Confirm Password', wrapper_class: 'padding1em col-md-offset-2 col-lg-offset-2 col-md-8 col-lg-8 input-group input-group-lg'  %>
+
+			<%= f.text_field :firstname, hide_label: :true, placeholder: 'First Name', wrapper_class: 'padding1em col-md-offset-2 col-lg-offset-2 col-md-8 col-lg-8 input-group input-group-lg' %>
+
+			<%= f.text_field :lastname, hide_label: :true, placeholder: 'Last Name', wrapper_class: 'padding1em col-md-offset-2 col-lg-offset-2 col-md-8 col-lg-8 input-group input-group-lg' %>
+
+			<%= f.submit "Submit", class: "btn btn-primary input-lg" %>
+
+		<% end %>
+	</section>
+</div>
+<!-- second column -->
+<div class="col-md-6 col-lg-6">
+	<div class="row padding1em">
+		<%= bootstrap_form_tag( url: '/session', method: 'post', :html => { :id => 'login_form', :class => 'login_form'} ) do |l| %>
+		<%= content_tag :div, class: "padding1em col-md-offset-2 col-lg-offset-2 col-md-8 col-lg-8" do -%>
+		<%= l.email_field :email, hide_label: :true, wrapper: {class: 'input-group', data: {foo: 'bar' }}, placeholder: "Email", class: "all", :id => 'email' %>
+		<% end%>
+		<%= content_tag :div, class: "padding1em col-md-offset-2 col-lg-offset-2 col-md-8 col-lg-8" do -%>
+
+		<%= l.password_field :password,hide_label: :true, placeholder: 'Password', wrapper: {class: 'input-group input-group-lg'}, class: "" %>
+		<% end %>
+		<%= content_tag :div, class: " row padding1em col-md-offset-7 col-lg-offset-7 col-md-3 col-lg-3" do -%>
+		<%= l.submit "Submit", class: "btn btn-primary input-lg" %>
+		<% end %>
+		<% end %>
+	</div>
+</div>

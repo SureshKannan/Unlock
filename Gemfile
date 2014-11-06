@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+ gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -40,3 +40,6 @@ gem 'spring',        group: :development
 
 # time zone
 gem 'tzinfo-data'
+
+# Rails bootstrap forms
+gem 'bootstrap_form'
