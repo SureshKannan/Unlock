@@ -1,0 +1,29 @@
+<%= form_tag({:controller => 'products',:action => "create"},:method=>:post, remote: true) do %>
+	<div class="row text-center">
+	    <div class="col-md-3 col-sm-6 hero-feature">
+	        <div class="thumbnail">
+	            <img src="/assets/products/rogers200x200.jpg" alt="">
+	            <div class="caption">
+	                <h3>Unlock</h3>
+	                <p>iPhone 4,4S,5,5C,5S,6,6+</p>
+	                <p>
+	                    <a href="/products/1" class="btn btn-primary">Buy Now!</a> <a href="/products/1" class="btn btn-default">More Info</a>
+	                </p>
+	            </div>
+	        </div>
+	    </div>
+	
+	    <div class="col-md-3 col-sm-6 hero-feature">
+	        <div class="thumbnail">
+	            <img src="/assets/products/Bell200x200.jpg" alt="">
+	            <div class="caption">
+	                <h3>Unlock</h3>
+	                <p>4,4S,5,5C,5S,6,6+</p>
+	                <p>
+	                    <a href="/products/2" class="btn btn-primary">Buy Now!</a> <a href="/products/2" class="btn btn-default">More Info</a>
+	                </p>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+<% end %>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	  <head>
+	  <title>Unlocking of any mobile device from anywhere</title>
+ 	  <meta charset="utf-8">
+  	  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  	  <meta name="description" content="Trusted service by millions, Unlock is the leading provider of the unlocking service any mobile device from anywhere in the world. " />
+  	  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	  </head>
+</head>
+<body>
+	<div class="row">
+	<header>
+		<nav class="navbar navbar-fixed-top navbar-default navbar-white" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="#"><img id="logo" src="/assets/icon/unlock_violet_icon3.jpeg"/></a>
+					<span id="title">Unlock</span>
+				</div>
+ 				<ul class="nav navbar-nav navbar-right">
+		        <li><a href="#">My Account</a></li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">English <span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li><a href="#">French</a></li>
+		            <li><a href="#">Russion</a></li>
+		            <li><a href="#">Spainsh</a></li>
+		          </ul>
+		        </li>
+		      </ul>					
+	      </div>
+		</nav>
+	</header>
+	</div>
+	<div class="container-fluid">
+	<%= yield %>
+	</div>
+</body>
+</html>
