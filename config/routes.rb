@@ -70,6 +70,9 @@ Rails.application.routes.draw do
   end
   controller :products do
     get "products", to: "products#index"
+    get "products/show"
+    get "products/show/:id", to: "products#show"
+    post "products/show", to: "products#create"
   end
   
 end
