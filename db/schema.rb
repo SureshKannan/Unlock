@@ -11,7 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141102155234) do
+ActiveRecord::Schema.define(version: 20141107154549) do
+
+  create_table "cartlineitems", force: true do |t|
+    t.integer  "Cart_id"
+    t.integer  "Product_id"
+    t.string   "imei",           limit: 50,                                         null: false
+    t.integer  "quantity",                                            default: 0,   null: false
+    t.decimal  "price",                      precision: 10, scale: 2, default: 0.0, null: false
+    t.decimal  "amount",                     precision: 10, scale: 2, default: 0.0, null: false
+    t.integer  "Orderstatus_id"
+    t.string   "comments",       limit: 500
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carts", force: true do |t|
+    t.integer  "Customer_id"
+    t.decimal  "salesamount",    precision: 10, scale: 2, default: 0.0
+    t.decimal  "receiptamount",  precision: 10, scale: 2, default: 0.0
+    t.decimal  "discountamount", precision: 10, scale: 2, default: 0.0
+    t.string   "pin"
+    t.date     "datepaid"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "countries", force: true do |t|
     t.string   "name",               limit: 100, null: false
@@ -37,6 +63,12 @@ ActiveRecord::Schema.define(version: 20141102155234) do
     t.string   "imei",       limit: 100, null: false
     t.integer  "Country_id"
     t.string   "Status",     limit: 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orderstatuses", force: true do |t|
+    t.string   "name",       limit: 75, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

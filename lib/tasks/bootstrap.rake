@@ -17,6 +17,15 @@ namespace :bootstrap do
     Product.create(:description=>'Unlocking of Telus iPhone 4,4S,5,5C,5S,6,6+',:imageurl=>'/assets/products/telus200x200.jpg',:currency_id=>2,:country_id=>1,:price=>40,:deliveryterms=>'3 to 12 hours')
     Product.create(:description=>'Unlocking of Fido iPhone 4,4S,5,5C,5S,6,6+',:imageurl=>'/assets/products/fido200x200.jpg',:currency_id=>2,:country_id=>1,:price=>40,:deliveryterms=>'3 to 12 hours')
   end
+  desc "Orderstatus"
+  task :addOrderStatus => :environment do
+    Orderstatus.create(:name=>'Order created')
+    Orderstatus.create(:name=>'Assigned to tech')
+    Orderstatus.create(:name=>'Work in progress')
+    Orderstatus.create(:name=>'Completed')
+    Orderstatus.create(:name=>'Cannot fix')
+  end
+
   desc "Running all boootstrapping tasks"
-  task :all => [:add_default_Countries,:add_default_Currencies,:add_default_products]
+  task :all => [:add_default_Countries,:add_default_Currencies,:add_default_products,:addOrderStatus]
 end

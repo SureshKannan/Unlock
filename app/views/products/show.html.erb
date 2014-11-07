@@ -24,6 +24,10 @@
 						<input class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 input-lg" name="txtImei" type="text" required="required" placeholder="Enter IMEI">
 					</div>
 					<div class="clearfix"></div>
+					<div>
+						<%= hidden_field_tag "product_id", @product.id%>
+						<%= hidden_field_tag "price", @product.price%>
+					</div>
 
 					<div class="row">
 						<button type="submit" name="cmdPayNow" class="btn btn-primary input-lg">Add Cart & Checkout</button>

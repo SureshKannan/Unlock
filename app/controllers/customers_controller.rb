@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
   def index
     @customer = Customer.new
     @countries = Country.all
-    @imei = params["txtImei"]
+    #@imei = params["txtImei"]
   end
   def new
     @customer = Customer.new
@@ -10,16 +10,28 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     @customer.save
+    
+    #create a security entry
     @security = Security.new
     @security.customer = @customer
     @security.username = @customer.email
     @security.password = params["txtPassword"]
     @security.save
-    CustomerNotifier.send_signup_email(@customer).deliver
+    
+    #updating the customer id
+    @cart = Cart.find(session[:cart_id]);
+    @cart.customer_id = @customer
+    @cart.save
+    
+    #send an email alert
+    #CustomerNotifier.send_signup_email(@customer).deliver
+    
+    
+    
     render "showcart"
   end
   def showcart
-    
+    @cart = Cart.find(session[:cart_id])
   end
   private
   def customer_params
