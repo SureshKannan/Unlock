@@ -14,13 +14,13 @@
 ActiveRecord::Schema.define(version: 20141107154549) do
 
   create_table "cartlineitems", force: true do |t|
-    t.integer  "Cart_id"
-    t.integer  "Product_id"
+    t.integer  "cart_id"
+    t.integer  "product_id"
     t.string   "imei",           limit: 50,                                         null: false
     t.integer  "quantity",                                            default: 0,   null: false
     t.decimal  "price",                      precision: 10, scale: 2, default: 0.0, null: false
     t.decimal  "amount",                     precision: 10, scale: 2, default: 0.0, null: false
-    t.integer  "Orderstatus_id"
+    t.integer  "orderstatus_id"
     t.string   "comments",       limit: 500
     t.string   "status"
     t.datetime "created_at"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20141107154549) do
   end
 
   create_table "carts", force: true do |t|
-    t.integer  "Customer_id"
+    t.integer  "customer_id"
     t.decimal  "salesamount",    precision: 10, scale: 2, default: 0.0
     t.decimal  "receiptamount",  precision: 10, scale: 2, default: 0.0
     t.decimal  "discountamount", precision: 10, scale: 2, default: 0.0

@@ -74,6 +74,7 @@ Rails.application.routes.draw do
     get "products/show"
     get "products/show/:id", to: "products#show"
     post "products/show", to: "products#create"
+    post "products/checkout"
   end
   
 end

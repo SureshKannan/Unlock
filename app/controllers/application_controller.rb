@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
     rescue ActiveRecord::RecordNotFound
       cart = Cart.create
       session[:cart_id] = cart.id  
-      logger.debug "&&&& Cart ID #{session[:cart_id]}"
+      cart
+      #logger.debug "&&&& Cart ID #{session[:cart_id]}"
   end
   
 end

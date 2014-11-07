@@ -4,7 +4,6 @@ class CreateCustomers < ActiveRecord::Migration
       t.string :email,:limit=>255,:null=>false,:unique=>true
       t.string :FirstName,:limit=>100,:null=>false
       t.string :LastName,:limit=>100,:null=>false
-      t.string :imei,:limit=>100,:null=>false
       t.references :Country
       t.string :Status,:limit=>1,:null=>true
       t.timestamps

@@ -1,7 +1,7 @@
 class CreateCarts < ActiveRecord::Migration
   def change
     create_table :carts do |t|
-      t.references :Customer
+      t.integer :customer_id
       t.decimal :salesamount,:null=>true,:default=>0,:precision=>10,:scale=>2
       t.decimal :receiptamount,:null=>true,:default=>0,:precision=>10,:scale=>2
       t.decimal :discountamount,:null=>true,:default=>0,:precision=>10,:scale=>2
