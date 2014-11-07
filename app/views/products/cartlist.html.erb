@@ -1,0 +1,18 @@
+<div class="col-lg-offset-9 col-md-offset-9 col-lg-1 col-md-1">
+	<div id="cart">
+		<div id="cartnumber">
+			<%= @length %>
+		</div>
+	</div>
+</div>
+<div class="col-md-12 col-sm-12 hero-feature">
+
+	<table>
+		<% @cartitems.each do |cartitem| %>
+		<tr>
+			<td><%= cartitem.cart_id %> &spnb</td>
+			<td><%= cartitem.imei %></td>
+		</tr>
+		<% end %>
+	</table>
+</div>
