@@ -34,16 +34,28 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  #send mail settings
-config.action_mailer.delivery_method = :smtp
-ActionMailer::Base.smtp_settings = {
-  :user_name => 'skannan@fourus.ca',
-  :password => 'appu431861',
-  :domain => 'fourus.netfirms.com',
-  :address => 'fourus.netfirms.com',
-  :port => 25,
-  :authentication => :plain,
-  :enable_starttls_auto => true,
-  :openssl_verify_mode => 'none'
-}
+  # send mail settings
+  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :user_name => 'skannan@fourus.ca',
+    :password => 'appu431861',
+    :domain => 'fourus.netfirms.com',
+    :address => 'fourus.netfirms.com',
+    :port => 25,
+    :authentication => :plain,
+    :enable_starttls_auto => true,
+    :openssl_verify_mode => 'none'
+  }
+  
+  #paypal settings
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    paypal_options = {
+      login: "skannan-facilitator_api1.fourus.ca",
+      password: "7XX8FP36JG5A3VCT",
+      signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31AO3h.lFitRi7fZslTsAMvYk9QGB0"
+    }
+    ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+  end
+
 end

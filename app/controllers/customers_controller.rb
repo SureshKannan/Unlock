@@ -25,14 +25,19 @@ class CustomersController < ApplicationController
       @cart.customer_id = @customer.id
       @cart.save
       
+      session[:customer_id] ||= @customer.id
       
       #send an email alert
-      #CustomerNotifier.send_signup_email(@customer).deliver
+      CustomerNotifier.send_signup_email(@customer).deliver
       
+      #updating the invoice total
       @totalamount=0
       @cart.cartlineitems.each do |p|
         @totalamount = @totalamount + p.amount
       end
+      @cart.totalamount = @totalamount
+      @cart.save
+      
       
       
     rescue Exception => e
@@ -41,11 +46,26 @@ class CustomersController < ApplicationController
       puts "*************** ERROR ****************"
       
     end
-    render "showcart"
+    redirect_to carts_show_url
+    #render "showcart"
   end
   def showcart
     @cart = Cart.find(session[:cart_id])
   end
+  
+  def express_checkout
+  response = EXPRESS_GATEWAY.setup_purchase(100,
+    ip: request.remote_ip,
+    return_url: "http://0.0.0.0:3000/home/index",
+    cancel_return_url: "http://0.0.0.0:3000/home/index",
+    currency: "USD",
+    allow_guest_checkout: true,
+    items: [{name: "Order", description: "Order description", quantity: "1", amount: 100}]
+  )
+  redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
+end
+
+  
   private
   def customer_params
     if :customer.nil?
