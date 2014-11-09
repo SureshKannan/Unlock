@@ -25,7 +25,7 @@ class CustomersController < ApplicationController
       @cart.customer_id = @customer.id
       @cart.save
       
-      session[:customer_id] ||= @customer.id
+      session[:customer_id] = @customer.id
       
       #send an email alert
       CustomerNotifier.send_signup_email(@customer).deliver
@@ -35,7 +35,7 @@ class CustomersController < ApplicationController
       @cart.cartlineitems.each do |p|
         @totalamount = @totalamount + p.amount
       end
-      @cart.totalamount = @totalamount
+      @cart.salesamount = @totalamount
       @cart.save
       
       

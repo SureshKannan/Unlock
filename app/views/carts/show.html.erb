@@ -1,4 +1,4 @@
-<%= form_tag({:controller => 'products',:action => "checkout"},:method=>:post) do %>
+<%= form_tag({:controller => 'carts',:action => "checkout"},:method=>:post) do %>
 <div class="row padding7em">
 	<div class="container">
 		<h2>Your Order</h2><br /><br />
@@ -49,8 +49,6 @@
 	</div>
 </div>
 <div class="row text-center">
-	<!-- <button type="submit" name="cmdPayNow" class="btn"> -->
-	<!-- <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;"></button> -->
-	<% link_to(image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_checkout_path) %>
+	<%= link_to(image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), carts_express_path) %>
 </div>
 <% end %>

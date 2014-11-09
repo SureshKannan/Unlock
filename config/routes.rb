@@ -76,5 +76,14 @@ Rails.application.routes.draw do
     post "products/show", to: "products#create"
     post "products/checkout"
   end
+  controller :carts do
+    get "carts/show"
+    post "carts/checkout"
+    get "carts/express"
+    get "carts/confirm"
+    post "carts/confirm"
+    get "carts/purchase"
+    post "carts/purchase"
+  end
   
 end

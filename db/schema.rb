@@ -32,7 +32,8 @@ ActiveRecord::Schema.define(version: 20141107154549) do
     t.decimal  "salesamount",    precision: 10, scale: 2, default: 0.0
     t.decimal  "receiptamount",  precision: 10, scale: 2, default: 0.0
     t.decimal  "discountamount", precision: 10, scale: 2, default: 0.0
-    t.string   "pin"
+    t.string   "paypaltoken"
+    t.string   "paypalid"
     t.date     "datepaid"
     t.string   "status"
     t.datetime "created_at"
@@ -60,7 +61,6 @@ ActiveRecord::Schema.define(version: 20141107154549) do
     t.string   "email",                  null: false
     t.string   "FirstName",  limit: 100, null: false
     t.string   "LastName",   limit: 100, null: false
-    t.string   "imei",       limit: 100, null: false
     t.integer  "Country_id"
     t.string   "Status",     limit: 1
     t.datetime "created_at"
