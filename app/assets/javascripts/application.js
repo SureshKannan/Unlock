@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.validate
 //= require bootstrap.min
 //= require respond
-//= require bootstrapValidator.min
 //= require turbolinks
 //= require_tree .
 function doPlayPause()
