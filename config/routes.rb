@@ -75,6 +75,7 @@ Rails.application.routes.draw do
     get "products/show/:id", to: "products#show"
     post "products/show", to: "products#create"
     post "products/checkout"
+    post "products/addCart", to: "products#addCart"
   end
   controller :carts do
     get "carts/show"
@@ -85,5 +86,5 @@ Rails.application.routes.draw do
     get "carts/purchase"
     post "carts/purchase"
   end
-  
+  resource :session, :only => [:new, :create, :destroy]
 end

@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
       Cart.find(session[:cart_id])
     rescue ActiveRecord::RecordNotFound
       cart = Cart.create
+      session[:total]=0
       session[:cart_id] = cart.id  
       cart
       #logger.debug "&&&& Cart ID #{session[:cart_id]}"

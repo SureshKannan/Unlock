@@ -50,11 +50,24 @@
 				            <li><a href="#">Spainsh</a></li>
 				          </ul>
 		        		</li>
+		        		<li>
+		        			<div id="cart">
+    		<div id="cartnumber">
+    			<!-- <%= @count%> -->
+    			<% if @cart %>
+    			<%=@cart.cartlineitems.count %>
+    			<% else %>
+    			<%=0 %>
+    			<% end %>
+    			</div>
+    	</div>
+		        		</li>
 	                </ul>
 	            </div>
 	            <!-- /.navbar-collapse -->
 	        </div>
 	        <!-- /.container -->
+    	
 	    </nav>
 	</header>
 	</div>

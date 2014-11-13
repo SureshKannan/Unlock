@@ -2,6 +2,7 @@ class CartsController < ApplicationController
   def show
     @cart = Cart.find(session[:cart_id])
     @customer = Customer.find(session[:customer_id])
+    logger.debug "**carts con total #{session[:total]}  *************" 
   end
   def checkout
     

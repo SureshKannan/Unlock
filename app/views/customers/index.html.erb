@@ -1,24 +1,24 @@
 
 <script>
-  $(document).ready(function()
-  {
-  	$("#new_customer").validate({
-		debug: true,
-		rules: 
-		{
-			"customer[email]": {required: true, email: true},
-			"customer[FirstName]":{required: true}
-		},
-		messages: {
-		"customer[email]": {
-					required: "Please enter a valid email address",
-					minlength: "Please enter a valid email address"
-			},
-		"customer[FirstName]": { required: "Please enter first name"}
-		}
-			
-	});
-	});
+  // $(document).ready(function()
+  // {
+  	// $("#new_customer").validate({
+		// debug: true,
+		// rules: 
+		// {
+			// "customer[email]": {required: true, email: true},
+			// "customer[FirstName]":{required: true}
+		// },
+		// messages: {
+		// "customer[email]": {
+					// required: "Please enter a valid email address",
+					// minlength: "Please enter a valid email address"
+			// },
+		// "customer[FirstName]": { required: "Please enter first name"}
+		// }
+// 			
+	// });
+	// });
   </script>
 		<div class="row padding7em">
 	<div class="col-md-offset-1 col-lg-offset-1 col-md-4 col-lg-4">
@@ -70,6 +70,7 @@
 	</div>
 	<% end %>
 	<!-- second column -->
+	<%= form_tag("/session", method: 'post') do  %>
 	<div class="col-md-6 col-lg-6">
 		<div class="row padding1em">
 			<div class="col-md-offset-2 col-lg-offset-2 col-md-8 col-lg-8">
@@ -87,6 +88,6 @@
 			</div>
 		</div>
 	</div>
-
+<% end %>
 </div>
 
