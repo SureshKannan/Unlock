@@ -1,3 +1,53 @@
+<script>
+  $(document).ready(function()
+  {
+  	alert('i am here');
+  	$("#products").validate({
+		debug: true,
+		rules: 
+		{
+			txtImei: {required: true,
+							minlength: 15}
+		},
+		messages: {
+		txtImei: {
+							required: "Please enter a valid IMEI",
+							minlength: "IMEI length must be minimum 15 characters"
+				}
+		},
+		submitHandler : function(form)
+		{
+			form.submit();
+		},
+		// the errorPlacement has to take the table layout into account
+			errorPlacement: function(error, element) {
+				if (element.is(":radio"))
+					error.appendTo(element.parent().next().next());
+				else if (element.is(":checkbox"))
+					error.appendTo(element.next());
+				else
+					error.appendTo(element.parent().next());
+			},
+		success: function(label) {
+				// set &nbsp; as text for IE
+				label.html("&nbsp;").addClass("checked");
+			},
+			highlight: function(element, errorClass) {
+				$(element).parent().next().find("." + errorClass).removeClass("checked");
+			}
+			
+	});
+	
+	});
+  	function doDisplay(form)
+  	{
+  		alert('true');
+  		$("#products").submit();
+  		return true;
+  	}
+</script>
+  
+
 <div class="row">
     <div class="col-lg-2 col-md-2">
     	<h3>Add Product:</h3>
@@ -9,7 +59,7 @@
     </div>
 </div>
 
-<%= form_tag({:controller => 'products',:action => "create"},:method=>:post) do %>
+<%= form_tag({:controller => 'products',:action => "create",:method=>"post"},:id=>"products") do %>
 	<div class="row text-center">
 	    <div class="col-md-12 col-sm-12 hero-feature">
 	        <div class="thumbnail">
@@ -21,7 +71,7 @@
 	                <p>*If we receive your order before 12 pm</p>                
 		            <!-- <span class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6"> -->
 		            <div>
-						<input class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 input-lg" name="txtImei" type="text" required="required" placeholder="Enter IMEI">
+						<input class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 input-lg" name="txtImei" id="txtImei" type="text" required="required"  placeholder="Enter IMEI">
 					</div>
 					<div class="clearfix"></div>
 					<div>
@@ -30,7 +80,7 @@
 					</div>
 
 					<div class="row">
-						<button type="submit" name="cmdPayNow" class="btn btn-primary input-lg">Add Cart & Checkout</button>
+						<button type="submit" name="cmdPayNow"  class="btn btn-primary input-lg">Add Cart & Checkout</button>
 						<button type="submit" name="cmdContinue" class="btn btn-primary input-lg">Add Cart & Continue Shopping</button>
 					</div>
 

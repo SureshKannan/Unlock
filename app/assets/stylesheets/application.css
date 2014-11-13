@@ -19,15 +19,23 @@
 label.valid {
   width: 24px;
   height: 24px;
-  background: url('../images/checked.gif') center center no-repeat;
-  display: inline-block;
-  text-indent: -9999px;
+  background: url('../images/cart.png') center center no-repeat;
 }
+label.checked {
+  width: 24px;
+  height: 24px;
+  background: url('../images/cart.png') center center no-repeat;
+}
+
 label.error {
   font-weight: bold;
   color: red;
   padding: 2px 8px;
   margin-top: 2px;
+}
+
+.checked {
+	background: url('../images/cart.png') center center no-repeat;
 }
 
 #cart {
