@@ -13,7 +13,12 @@ class ProductsController < ApplicationController
     if params[:cmdContinue] then
         redirect_to action: 'index'
     else
-        redirect_to customers_index_url 
+        if session[:customer_id].nil? == false then
+          redirect_to carts_show_url
+        else
+          redirect_to customers_index_url
+        end 
+       
         #redirect_to  :controller=>"customers",:action=> 'index'
         #@customer = Customer.new
         #@countries = Country.all
@@ -21,6 +26,8 @@ class ProductsController < ApplicationController
     end    
   end
   def show
+    @cart = current_cart
+    @count = @cart.cartlineitems.size
     @product = Product.find(params[:id])
   end
 end

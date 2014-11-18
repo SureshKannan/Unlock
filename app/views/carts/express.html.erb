@@ -1,10 +1,4 @@
-<%= form_tag({:controller => 'carts',:action => "confirm"},:method=>:post) do %>
-<h1>Please confirm your payment.</h1>
-<h2>Thanks for shopping with us. We have emailed you the details</h2>
-<h3>firstname: <%=@cart.first_name%></h3>
-<h3>lastname: <%=@cart.last_name%></h3>
-<div class="row text-center">
-<button type="submit" name="butConfirm"  class="btn btn-primary input-lg">Confirm</button>
-</div>
-<% end %>
-
+Cart.debug :
+ <%=debug(@cart)%>
+ 
+Amount <%=@amount%>

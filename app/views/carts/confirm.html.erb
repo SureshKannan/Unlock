@@ -1,10 +1,52 @@
 <%= form_tag({:controller => 'carts',:action => "purchase"},:method=>:post) do %>
-<h1>Please confirm your payment.</h1>
-<h2>Thanks for shopping with us. We have emailed you the details</h2>
-<h3>firstname: <%=@firstname%></h3>
-<h3>lastname: <%=@lastname%></h3>
-<div class="row text-center">
-<button type="submit" name="butConfirm"  class="btn btn-primary input-lg">Confirm</button>
+<h1>Please confirm your order <%=@firstame%>.</h1>
+<div class="row padding7em">
+	<div class="container">
+		<table class="table table-striped table-hover">
+			<thead>
+				<col width="20%">
+				<tr>
+					<td>Imei</td>
+					<td>Item Description</td>
+					<td>Quantity</td>
+					<td>Price</td>
+					<td>Delivery Time</td>
+					<td>Amount</td>
+				</tr>
+			</thead>
+			<tbody>
+				<% @cart.cartlineitems.each do |p| %>
+				<tr>
+					<td>
+						<%= p.imei %>
+					</td>
+					<td>
+						 <div class="thumbnail">
+	            			<img src="<%= p.product.imageurl%>" alt="">
+	            			<div class="caption">
+	            				<h5><%= p.product.description%></h5>
+	            			</div>
+	            		</div>
+					</td>
+					<td><%= p.quantity %></td>
+					<td><%= p.product.currency.code %> <%= number_to_currency(p.price,unit: ' ')%></td>
+					<td><%= p.product.deliveryterms%></td>
+					<td><%= p.amount%></td>
+				</tr>
+				<% end %>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="4">Total:</td>
+					<td><%=@totalamount%></td>
+				</tr>
+			</tfoot>	
+		</table>	
+	</div>
 </div>
+<div class="row text-center">
+	<button type="submit" name="butConfirm"  class="btn btn-primary input-lg">Confirm Payment</button>
+</div>
+
 <% end %>
 

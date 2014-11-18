@@ -41,7 +41,7 @@ Rails.application.configure do
     :password => 'R@cky118',
     :domain => 'phoneunlockserviceco.netfirms.com',
     :address => 'phoneunlockserviceco.netfirms.com',
-    :port => 25,
+    :port => 587,
     :authentication => :plain,
     :enable_starttls_auto => true,
     :openssl_verify_mode => 'none'
@@ -51,11 +51,18 @@ Rails.application.configure do
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test
     paypal_options = {
-      login: "skannan-facilitator_api1.fourus.ca",
-      password: "7XX8FP36JG5A3VCT",
-      signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31AO3h.lFitRi7fZslTsAMvYk9QGB0"
+      login: "unlockphn-facilitator_api1.gmail.com",
+      password: "RJWALPP35SPBRM6B",
+      signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31AZsJy45PfFnCMB0AwpgQWUaM21bF"
     }
+    
+    # paypal_options = {
+      # login: "skannan-facilitator_api1.fourus.ca",
+      # password: "7XX8FP36JG5A3VCT",
+      # signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31AO3h.lFitRi7fZslTsAMvYk9QGB0"
+    # }
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+    
   end
 
 end

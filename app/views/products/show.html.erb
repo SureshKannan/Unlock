@@ -49,9 +49,11 @@
     	<h3>Add Product:</h3>
     </div>
     <div class="col-lg-offset-9 col-md-offset-9 col-lg-1 col-md-1">
+    	<a href="<%=carts_show_url%>">
     	<div id="cart">
-    		<div id="cartnumber">0</div>
+    		<div id="cartnumber"><%=@count%></div>
     	</div>
+    	</a>
     </div>
 </div>
 
@@ -88,8 +90,8 @@
 	    </div>
 	</div>
 <% end %>
-<div class="row">
+<!-- <div class="row">
     <div class="col-lg-12">
         <h3>Other similar products:</h3>
     </div>
-</div>
+</div> -->

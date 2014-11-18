@@ -22,6 +22,21 @@ class CustomersController < ApplicationController
     else
       session[:customer_id] = @security.customer.id
       session[:customer_name] = @security.customer.FirstName + ' ' + @security.customer.LastName
+
+      #updating the customer id
+      @cart = Cart.find(session[:cart_id])
+      @cart.customer_id = @security.customer.id
+      @cart.save
+            
+      #updating the invoice total
+      @totalamount=0
+      @cart.cartlineitems.each do |p|
+        @totalamount = @totalamount + p.amount
+      end
+      @cart.salesamount = @totalamount
+      @cart.save
+      
+            
       redirect_to carts_show_url
     end
   end

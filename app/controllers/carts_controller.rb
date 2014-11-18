@@ -7,35 +7,27 @@ class CartsController < ApplicationController
     
   end
   def express
-    amount = current_cart.salesamount*100
+    @cart = Cart.find(session[:cart_id])
+    amount = @cart.salesamount*100
+    @amount = amount
     response = EXPRESS_GATEWAY.setup_purchase(amount,
       :ip                => request.remote_ip,
       :return_url        => carts_confirm_url,
       :cancel_return_url => home_index_url
     )
+    logger.debug "*********************************"
+    logger.debug response
+    logger.debug "*********************************"
+    @response = response
     @token = response.token
-    session[:token]=@token
     
-   
-    # EXPRESS_GATEWAY.purchase(amount, express_purchase_options)
-#     
-    # # def express_token=(token)
-    # # write_attribute(:express_token, token)
-    # # if new_record? && !token.blank?
-      # # 
-      # # self.express_payer_id = details.payer_id
-      # # self.first_name = details.params["first_name"]
-      # # self.last_name = details.params["last_name"]
-    # # end
-  # # end
-#   
-#   
-    # @url = EXPRESS_GATEWAY.redirect_url_for(response.token)
-    # #EXPRESS_GATEWAY.purchase()
+    session[:token]=@token
     redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
   end
   def confirm
-    
+    @cart = Cart.find(session[:cart_id])
+    @customer = Customer.find(session[:customer_id])
+
     details = EXPRESS_GATEWAY.details_for(session[:token])
     @payerid = details.payer_id
     session[:payerid]=@payerid
@@ -43,8 +35,9 @@ class CartsController < ApplicationController
     @lastname = details.params["last_name"]
   end
   def purchase
-     amount = current_cart.salesamount*100
+    amount = current_cart.salesamount*100
     response = EXPRESS_GATEWAY.purchase(amount, express_purchase_options)
+    session[:cart_id] = nil
   end
   def express_purchase_options
   {
