@@ -16,15 +16,46 @@
  *= require_tree .
  *= require_self
  */
+.my-error-class {
+    color:#FF0000;  /* red */
+}
+.my-valid-class {
+    color:#00CC00; /* green */
+}
+
+label.error {
+  background:url("../images/unchecked.gif") no-repeat 0px 0px;
+  padding-left: 16px;
+  padding-bottom: 2px;
+  font-weight: bold;
+  color: #EA5200;
+  float: left;
+}
+
+.error {
+  background:url("../images/unchecked.gif") no-repeat 0px 0px;
+  padding-left: 16px;
+  padding-bottom: 2px;
+  font-weight: bold;
+  color: #EA5200;
+  float: left;
+}
+
+label.checked {
+  background:url("../images/checked.gif") no-repeat 0px 0px;
+  float:left;
+}
+
+/*
 label.valid {
   width: 24px;
   height: 24px;
-  background: url('../images/cart.png') center center no-repeat;
+  background: url('../images/checked.gif') center center no-repeat;
 }
 label.checked {
   width: 24px;
   height: 24px;
-  background: url('../images/cart.png') center center no-repeat;
+  background: url('../images/unchecked.gif') center center no-repeat;
 }
 
 label.error {
@@ -32,12 +63,12 @@ label.error {
   color: red;
   padding: 2px 8px;
   margin-top: 2px;
+  background: url('../images/unchecked.gif') center center no-repeat;
 }
 
 .checked {
-	background: url('../images/cart.png') center center no-repeat;
-}
-
+	background: url('../images/unchecked.gif') center center no-repeat;
+}*/
 #cart {
   background-image: url('../images/cart.png');
   background-repeat: no-repeat;

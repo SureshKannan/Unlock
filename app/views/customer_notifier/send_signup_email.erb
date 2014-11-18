@@ -4,7 +4,19 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Thanks for signing up, <%= @customer.FirstName %>!</h1>
-    <p>Thanks for joining and have a great day!</p>
+  	<h1>Hello <%= @customer.FirstName %> </h1>
+    <h1>Thank you for choosing the phone unlock service. </h1>
+    
+    <p style="font-family: Verdana;font-size:1.2em">Sign Up Information</p>
+    
+    <h3> User name: <%=@security.username %> </h3>
+    <h3> Password: <%=@security.password %> </h3>
+    
+    <p style="font-family: Verdana;font-size:1.2em"> Click <a href="http://www.phoneunlockservice.com/customers/index">here</a></p>
+    
+    <p style="style="font-family: Verdana;font-size:1.2em"> Please contact the phoneunlockservice by email if you need any further assistance. Our emaild id: support@phoneunlockservice.com</p>
+    
+    <p style="font-family: Verdana;font-size:1.2em">Thanks</p>
+	<p style="font-family: Verdana;font-size:1.2em">PhoneUnlockService.com</p>
   </body>
 </html>

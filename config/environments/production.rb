@@ -79,6 +79,20 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+  #smtp mail settings
+  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :user_name => 'support@PhoneUnlockService.com',
+    :password => 'R@cky118',
+    :domain => 'phoneunlockserviceco.netfirms.com',
+    :address => 'phoneunlockserviceco.netfirms.com',
+    :port => 25,
+    :authentication => :plain,
+    :enable_starttls_auto => true,
+    :openssl_verify_mode => 'none'
+  }
+  
   #paypal settings
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test

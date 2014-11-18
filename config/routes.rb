@@ -68,6 +68,10 @@ Rails.application.routes.draw do
     post "customers", to: "customers#create"
     get "customers/showcart"
     get "customers/index"
+    get "customers/signin"
+    post "customers/signin"
+    get "customers/logout"
+    get "customers/verify"
   end
   controller :products do
     get "products", to: "products#index"

@@ -2,20 +2,97 @@
 <script>
   $(document).ready(function()
   {
-  	$("#new_customer").validate({
+  	$("#Customer_SignIn").validate({
 		debug: true,
+		errorClass: "my-error-class",
+   		validClass: "my-valid-class",
 		rules: 
 		{
-			"customer[email]": {required: true, email: true},
-			"customer[FirstName]":{required: true}
+			UserName: {required: true },
+			Password: {required: true}
+		},
+		messages: {
+			UserName: { required: "Please enter a username" },
+			Password: { required: "Please enter a password" }
+		},
+		submitHandler : function(form)
+		{
+			form.submit();
+		}//,
+		// // the errorPlacement has to take the table layout into account
+		// errorPlacement: function(error, element) {
+				// if (element.is(":radio"))
+					// error.appendTo(element.parent().next().next());
+				// else if (element.is(":checkbox"))
+					// error.appendTo(element.next());
+				// else
+					// error.appendTo(element.parent());
+					// //error.appendTo(element.parent().next());
+			// },
+		// success: function(label) {
+				// // set &nbsp; as text for IE
+				// label.html("&nbsp;").addClass("checked");
+			// },
+			// highlight: function(element, errorClass) {
+				// //alert('highlight');
+				// //$(element).parent().next().find("." + errorClass).removeClass("checked");
+				// $(element).parent().find("." + errorClass).removeClass("checked");
+			// }
+			
+	});
+
+	
+  	$("#new_customer").validate({
+		debug: true,
+		errorClass: "my-error-class",
+   		validClass: "my-valid-class",
+		rules: 
+		{
+			"customer[email]": {required: true, email: true, remote: "/customers/verify" },
+			"customer[FirstName]":{required: true},
+			"customer[LastName]":{required: true},
+			"customer[Country_id]":{required: true},
+			txtPassword: { minlength : 5 },
+			txtConfirmPassword: { equalTo: "#txtPassword",
+								  minlength : 5
+								}
 		},
 		messages: {
 		"customer[email]": {
 					required: "Please enter a valid email address",
-					minlength: "Please enter a valid email address"
+					minlength: "Please enter a valid email address",
+					remote: "Email already exists"
 			},
-		"customer[FirstName]": { required: "Please enter first name"}
-		}
+		"customer[FirstName]": { required: "Please enter first name"},
+		"customer[LastName]":  { required: "Please enter last name"},
+		"customer[Country_id]":  { required: "Please choose the country"},
+		"txtPassword": {required: "Please enter the password"},
+		"txtConfirmPassword": { required: "Please enter the password",
+								equalTo: "Please confirm the password by entering the same"}
+		},
+		submitHandler : function(form)
+		{
+			form.submit();
+		}//,
+		// // the errorPlacement has to take the table layout into account
+		// errorPlacement: function(error, element) {
+				// if (element.is(":radio"))
+					// error.appendTo(element.parent().next().next());
+				// else if (element.is(":checkbox"))
+					// error.appendTo(element.next());
+				// else
+					// error.appendTo(element.parent());
+					// //error.appendTo(element.parent().next());
+			// },
+		// success: function(label) {
+				// // set &nbsp; as text for IE
+				// label.html("&nbsp;").addClass("checked");
+			// },
+			// highlight: function(element, errorClass) {
+				// //alert('highlight');
+				// //$(element).parent().next().find("." + errorClass).removeClass("checked");
+				// $(element).parent().find("." + errorClass).removeClass("checked");
+			// }
 			
 	});
 	});
@@ -54,12 +131,12 @@
 		</div>
 		<div class="row padding1em">
 			<div class="col-md-offset-2 col-lg-offset-2 col-md-8 col-lg-8">
-				<input class="form-control input-lg" name="txtPassword" type="password" tabindex="4" required="required"  placeholder="Password">
+				<input class="form-control input-lg" id="txtPassword" name="txtPassword" type="password" tabindex="4" required="required"  placeholder="Password">
 			</div>
 		</div>	
 		<div class="row padding1em">
 			<div class="col-md-offset-2 col-lg-offset-2 col-md-8 col-lg-8">
-				<input class="form-control input-lg" name="txtConfirmPassword" type="password" tabindex="5" required="required"  placeholder="Confirm Password">
+				<input class="form-control input-lg" id="txtConfirmPassword" name="txtConfirmPassword" type="password" tabindex="5" required="required"  placeholder="Confirm Password">
 			</div>
 		</div>	
 		<div class="row padding1em">
@@ -70,15 +147,24 @@
 	</div>
 	<% end %>
 	<!-- second column -->
+	<%= form_tag({:controller => 'customers',:action => "signin",:method=>"post"},:id=>"Customer_SignIn") do %>
 	<div class="col-md-6 col-lg-6">
 		<div class="row padding1em">
 			<div class="col-md-offset-2 col-lg-offset-2 col-md-8 col-lg-8">
-				<input class="form-control input-lg" name="UserName" tabindex="7" type="text" required="required"  placeholder="User Name">
+				<% if flash[:notice] %>
+  				<p id="notice" class="error" ><%= flash[:notice] %></p>
+				<% end %>
+			</div>	
+		</div>	
+
+		<div class="row padding1em">
+			<div class="col-md-offset-2 col-lg-offset-2 col-md-8 col-lg-8">
+				<input class="form-control input-lg" id="UserName" name="UserName" tabindex="7" type="text" required="required"  placeholder="User Name">
 			</div>	
 		</div>	
 		<div class="row padding1em">
 			<div class="col-md-offset-2 col-lg-offset-2 col-md-8 col-lg-8">
-				<input class="form-control input-lg" name="Password" type="password" tabindex="8" required="required"  placeholder="Password">
+				<input class="form-control input-lg" id="Password" name="Password" type="password" tabindex="8" required="required"  placeholder="Password">
 			</div>
 		</div>	
 		<div class="row padding1em">
@@ -87,6 +173,7 @@
 			</div>
 		</div>
 	</div>
+	<% end %>
 
 </div>
 

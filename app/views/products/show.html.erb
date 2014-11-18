@@ -1,7 +1,6 @@
 <script>
   $(document).ready(function()
   {
-  	alert('i am here');
   	$("#products").validate({
 		debug: true,
 		rules: 
@@ -26,25 +25,22 @@
 				else if (element.is(":checkbox"))
 					error.appendTo(element.next());
 				else
-					error.appendTo(element.parent().next());
+					error.appendTo(element.parent());
+					//error.appendTo(element.parent().next());
 			},
 		success: function(label) {
 				// set &nbsp; as text for IE
 				label.html("&nbsp;").addClass("checked");
 			},
 			highlight: function(element, errorClass) {
-				$(element).parent().next().find("." + errorClass).removeClass("checked");
+				//alert('highlight');
+				//$(element).parent().next().find("." + errorClass).removeClass("checked");
+				$(element).parent().find("." + errorClass).removeClass("checked");
 			}
 			
 	});
 	
 	});
-  	function doDisplay(form)
-  	{
-  		alert('true');
-  		$("#products").submit();
-  		return true;
-  	}
 </script>
   
 
@@ -73,6 +69,7 @@
 		            <div>
 						<input class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4 input-lg" name="txtImei" id="txtImei" type="text" required="required"  placeholder="Enter IMEI">
 					</div>
+					<span></span>
 					<div class="clearfix"></div>
 					<div>
 						<%= hidden_field_tag "product_id", @product.id%>

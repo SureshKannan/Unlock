@@ -7,6 +7,24 @@ class CustomersController < ApplicationController
   def new
     @customer = Customer.new
   end
+  def verify
+    @customer = Customer.find_by_email(params[:customer][:email])
+
+    respond_to do |format|
+      format.json { render :json => !@customer }
+    end
+  end
+  def signin
+    @security = Security.authenticate(params[:UserName],params[:Password])
+    # #@security = Security.where("username = ? and password= ?",params["UserName"],params["Password"])
+    if @security.nil?
+      redirect_to customers_index_url, notice: 'Username and password does not match or user does not exist'
+    else
+      session[:customer_id] = @security.customer.id
+      session[:customer_name] = @security.customer.FirstName + ' ' + @security.customer.LastName
+      redirect_to carts_show_url
+    end
+  end
   def create
     begin
       
@@ -26,9 +44,11 @@ class CustomersController < ApplicationController
       @cart.save
       
       session[:customer_id] = @customer.id
+      session[:customer_name] = @customer.FirstName + ' ' + @customer.LastName
+      
       
       #send an email alert
-      CustomerNotifier.send_signup_email(@customer).deliver
+      CustomerNotifier.send_signup_email(@customer,@security).deliver
       
       #updating the invoice total
       @totalamount=0
@@ -48,6 +68,10 @@ class CustomersController < ApplicationController
     end
     redirect_to carts_show_url
     #render "showcart"
+  end
+  def logout
+    reset_session
+    redirect_to home_index_url
   end
   def showcart
     @cart = Cart.find(session[:cart_id])

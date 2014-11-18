@@ -37,10 +37,10 @@ Rails.application.configure do
   # send mail settings
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
-    :user_name => 'skannan@fourus.ca',
-    :password => 'appu431861',
-    :domain => 'fourus.netfirms.com',
-    :address => 'fourus.netfirms.com',
+    :user_name => 'support@PhoneUnlockService.com',
+    :password => 'R@cky118',
+    :domain => 'phoneunlockserviceco.netfirms.com',
+    :address => 'phoneunlockserviceco.netfirms.com',
     :port => 25,
     :authentication => :plain,
     :enable_starttls_auto => true,
