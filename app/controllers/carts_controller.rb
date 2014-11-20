@@ -1,4 +1,34 @@
 class CartsController < ApplicationController
+  def create
+    @cart = current_cart
+    logger.debug "**User ID #{session[:cart_id]}  *************"     
+    @cartitem = Cartlineitem.new(:cart_id=>@cart.id,:product_id=>params[:product_id], :imei => params[:txtImei],:quantity=>1, :price => params[:price], :amount=> params[:price],:orderstatus_id=>1)
+    #@cartitem = @cart.cartlineitems.build(:product_id=>params[:product_id], :imei => params[:txtImei],:quantity=>1, :price => params[:price], :amount=> params[:price],:orderstatus_id=>1,:comments=>"",:status=>"")
+    if @cartitem.save then 
+      @cart.cartlineitems << @cartitem
+    end
+    if params[:cmdContinue] then
+        redirect_to action: 'index'
+    else
+        if session[:customer_id].nil? == false then
+          @cart.customer_id = session[:customer_id]
+          @cart.save
+
+          #updating the invoice total
+          @totalamount=0
+          @cart.cartlineitems.each do |p|
+            @totalamount = @totalamount + p.amount
+          end
+          @cart.salesamount = @totalamount
+          @cart.save
+                
+          redirect_to carts_show_url
+        else
+          redirect_to customers_index_url
+        end 
+    end    
+  end
+  
   def show
     @cart = Cart.find(session[:cart_id])
     @customer = Customer.find(session[:customer_id])
@@ -28,16 +58,29 @@ class CartsController < ApplicationController
     @cart = Cart.find(session[:cart_id])
     @customer = Customer.find(session[:customer_id])
 
-    details = EXPRESS_GATEWAY.details_for(session[:token])
-    @payerid = details.payer_id
+    det = EXPRESS_GATEWAY.details_for(session[:token])
+    @payerid = det.payer_id
     session[:payerid]=@payerid
-    @firstname = details.params["first_name"]
-    @lastname = details.params["last_name"]
+    
+    @cart.paypaltoken = session[:token]
+    @cart.paypalid = @payerid
+    @cart.receiptamount = @cart.salesamount
+    @cart.save
+    
+    @firstname = det.params["first_name"]
+    @lastname = det.params["last_name"]
   end
   def purchase
     amount = current_cart.salesamount*100
     response = EXPRESS_GATEWAY.purchase(amount, express_purchase_options)
-    session[:cart_id] = nil
+    if response.success?
+      @cart = Cart.find(session[:cart_id])
+      @customer = Customer.find(session[:customer_id])
+      session[:cart_id] = nil
+      #send payment confirmation email
+      CustomerNotifier.send_payment_confirmation_email(@cart,@customer).deliver
+    end
+
   end
   def express_purchase_options
   {

@@ -77,7 +77,7 @@ Rails.application.routes.draw do
     get "products", to: "products#index"
     get "products/show"
     get "products/show/:id", to: "products#show"
-    post "products/show", to: "products#create"
+    post "products/show", to: "carts#create"
     post "products/checkout"
   end
   controller :carts do

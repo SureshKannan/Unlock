@@ -25,7 +25,7 @@
 			<table style='width:680px;' cellpadding='5' class='applyBorder'>
 				<tr>
 					<td style='width:300px' class='applyBottomBorder' ><img width='300' height='80' src='http://www.eharlequin.com/media/images/eHarlequin.png' alt='Harlequin' /></td>
-					<td style='width:380px;font-family: Verdana,arial;font-size: 12px;font-weight: bold;' align='center' class='applyBottomBorder' >Google Agency - USA Sales Data Extraction Report
+					<td style='width:380px;font-family: Verdana,arial;font-size: 12px;font-weight: bold;' align='center' class='applyBottomBorder' >Google Agency - USA RPS Report (USA)
 					<p style='font-family:verdana;font-size:11px;font-weight:bold;color:red'>
 						(UAT-TEST ENVIRONMENT)
 					</p></td>
@@ -37,99 +37,9 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan='2' align='left' class='textFont'>The record counts and totals of the source Excel data match perfectly with the data loaded.
-					<br>
-					<br>
-					</td>
-				</tr>
-				<tr>
-					<td colspan='2' align='left' class='textFont'> No of record in Source Excel Worksheet: 20271
-					<br>
-					No of record in Target: 20271
-					<br>
-					Total Invoice Qty in Source Excel Worksheet: 20249
-					<br>
-					Total Invoice Qty in Target: 20249
-					<br>
-					Total Return Qty in Source Excel Worksheet: 22
-					<br>
-					Total Return Qty in Target: 22
-					<br>
-					Total Invoice Amount in Source Excel Worksheet: 83117.62
-					<br>
-					Total Invoice Amount in Target: 83117.62
-					<br>
-					</td>
-				</tr>
-				<tr>
-					<td colspan='2' align='left' class='textFont'> The file contains:
-					<br>
-					<br>
-					&#149; <b>151</b> Book has not released yet
-					<br>
-					<br>
-					&#149; <b>6215</b> Invalid List Price
-					<br>
-					<br>
-					&#149; <b>13863</b> Clean
-					<br>
-					<br>
-					&#149; <b>193</b> Auto Fixed 13 to 10 Digital ISBN </td>
-				</tr>
-				<tr>
 					<td colspan='2' align='left' class='textFont'>
 					<br>
-					<b> 151 Row[s] has been excluded/ignored. Total Excluded/Ignored Qty: 151,Amount: 596.99 </b>
-					<br>
-					<br>
-					</td>
-				</tr>
-				<tr>
-					<td colspan='2' align='left' class='textFont'>The data loaded matches with staging.</td>
-				</tr>
-				<tr>
-					<td colspan='2' align='left' class='textFont'> Invoice Qty (Source): 20249 DW: 20249
-					<br>
-					Refund Qty (Source): 22 DW: 22
-					<br>
-					Gross Amount (Source): 83222.4 DW: 83222.4
-					<br>
-					Refund Amount (Source): 104.78 DW: 104.78
-					<br>
-					Net Amount (Source): 83117.62 DW: 83117.62
-					<br>
-					</td>
-				</tr>
-				<tr>
-					<td colspan='2' align='left' class='textFont'>The data loaded matches with digital data warehouse.</td>
-				</tr>
-				<tr>
-					<td colspan='2' align='left' class='textFont'> Invoice Qty (Source): 20249 DW: 20249
-					<br>
-					Refund Qty (Source): 22 DW: 22
-					<br>
-					Gross Amount (Source): 83222.4 DW: 83222.4
-					<br>
-					Refund Amount (Source): 104.78 DW: 104.78
-					<br>
-					Net Amount (Source): 83117.62 DW: 83117.62
-					<br>
-					</td>
-				</tr>
-				<tr>
-					<td colspan='2' align='left' class='textFont'> Previous digital data warehouse balance.</td>
-				</tr>
-				<tr>
-					<td colspan='2' align='left' class='textFont'> Net Qty in Digital Data Warehouse   : 0
-					<br>
-					Net Amount in Digital Data Warehouse: 0
-					<br>
-					</td>
-				</tr>
-				<tr>
-					<td colspan='2' align='left' class='textFont'>
-					<br>
-					<b><u>Eligible RPS Reconciliation Summary:</u></b>
+					<b><u>Final RPS Reconciliation Summary:</u></b>
 					<br>
 					<table cellpadding='5' style='font-family:verdana;font-size:11px;border: solid 1px #898989;' width='100%'>
 						<tr>
@@ -191,30 +101,39 @@
 									<td align='right'>1.13</td>
 								</tr>
 							</table></td>
+							<td align='left'>
+							<table cellpadding='2' style='font-family:verdana;font-size:8px;' border='0' width='100%'>
+								<tr>
+									<th align='left' style='border-bottom: solid 1px #898989;'>Currency (S)</th><th align='right' style='border-bottom: solid 1px #898989;'>ExRate</th><th align='right' style='border-bottom: solid 1px #898989;'>Currency (RPS)</th><th align='right' style='border-bottom: solid 1px #898989;'>Re.Amount (S)</th><th align='right' style='border-bottom: solid 1px #898989;'>Re.Amount (RPS)</th>
+								</tr>
+								<tr>
+									<td>USD</td><td>1</td><td>USD</td><td align='right'>104.78</td><td align='right'>104.78</td>
+								</tr>
+							</table></td>
 						</tr>
 						<tr>
-							<td align='left'><a href='http://toredtdev04/myvsxtractor/ViewHistory.aspx?da=y&vid=37&id=1909&cid=-1'>Excluded/Ignored</a>
+							<td align='left'><a href='http://toredtdev04/myvsxtractor/ViewHistory.aspx?da=y&vid=37&id=1911&cid=-1'>Excluded/Ignored</a>
 							<br>
 							(Include Bundle Units 171)</td>
 							<td align='right'>151</td>
-							<td align='left'>
-							<table cellpadding='2' style='font-family:verdana;font-size:11px;' border='0' width='100%'>
-								<tr>
-									<td align='left'>USD</td><td align='right'>781.54</td>
-								</tr>
-							</table></td>
+							<td align='center'>-</td>
 							<td align='left'>
 							<table cellpadding='2' style='font-family:verdana;font-size:11px;' border='0' width='100%'>
 								<tr>
 									<td align='right'>596.99</td>
 								</tr>
-							</table></td>
-							<td align='left'>
+							</table>
+							<table cellpadding='2' style='font-family:verdana;font-size:11px;' border='0' width='100%'>
+								<tr>
+									<td align='left'>USD</td><td align='right'>781.54</td>
+								</tr>
+							</table>
 							<table cellpadding='2' style='font-family:verdana;font-size:11px;' border='0' width='100%'>
 								<tr>
 									<td align='right'>27.67</td>
 								</tr>
 							</table></td>
+							<td align='center'>-</td>
 							<td align='left'>
 							<table cellpadding='2' style='font-family:verdana;font-size:8px;' border='0' width='100%'>
 								<tr>
@@ -228,7 +147,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td align='left'><a href='http://toredtdev04/myvsxtractor/ViewHistory.aspx?da=y&vid=37&id=1909&cid=0'>$0 Revenue with waiver/contract No Royalty</a>
+							<td align='left'><a href='http://toredtdev04/myvsxtractor/ViewHistory.aspx?da=y&vid=37&id=1911&cid=0'>$0 Revenue with waiver/contract No Royalty</a>
 							<br>
 							(Include Bundle Units 0)</td>
 							<td align='right'>0</td>
@@ -238,7 +157,7 @@
 							<td align='left'></td>
 						</tr>
 						<tr>
-							<td align='left'><a href='http://toredtdev04/myvsxtractor/ViewHistory.aspx?da=y&vid=37&id=1909&cid=-2'>Royalty Units with $0 Revenue</a>
+							<td align='left'><a href='http://toredtdev04/myvsxtractor/ViewHistory.aspx?da=y&vid=37&id=1911&cid=-2'>Royalty Units with $0 Revenue</a>
 							<br>
 							(Include Bundle Units 0)</td>
 							<td align='right'>0</td>
@@ -280,40 +199,36 @@
 								</tr>
 							</table></td>
 						</tr>
-					</table>
-					<tr style='border-bottom: solid 1px #898989;border-top: solid 1px #898989;'>
-						<td colspan='5' align='left'><b>VENDOR FILE RECORD COUNTS RECONCILIATION</b></td>
-					</tr>
-					<tr>
-						<td colspan='5' align='left'>
-						<table cellpadding='2' style='font-family:verdana;font-size:8px;background-color:red' border='0' width='100%'>
-							<tr>
-								<td> Total No Of Records Downloaded: </td>
-								<td>20271</td>
-								<td> No Of Unique Records Downloaded: </td>
-								<td>6187</td>
-							</tr>
-							<tr>
-								<td> Dropped Records: </td>
-								<td>0</td>
-								<td> Dropped ISBN Records: </td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<td> Total Records in a File: </td>
-								<td>20271</td>
-								<td> ISBN records Processed in RPS: </td>
-								<td>6187</td>
-							</tr>
-						</table></td>
-					</tr>
-					<tr>
-						<td colspan='2' align='left' class='textFont'>To View the Transfered data, please click <a href='http://toredtdev04/myvsxtractor/ViewHistory.aspx?vid=37&da=y'>here</a></td>
-					</tr>
+					</table></td>
+				</tr>
+				<tr style='border-bottom: solid 1px #898989;border-top: solid 1px #898989;'>
+					<td colspan='5' align='left'><b>VENDOR FILE RECORD COUNTS RECONCILIATION</b></td>
+				</tr>
+				<tr>
+					<td colspan='5' align='left'>
+					<table cellpadding='2' style='font-family:verdana;font-size:11px;' border='0' width='100%'>
+						<tr>
+							<td> Total No Of Records Downloaded: </td>
+							<td>20271</td>
+							<td> No Of Unique Records Downloaded: </td>
+							<td>6187</td>
+						</tr>
+						<td> Dropped Records Condition: </td>
+						<td>0</td>
+						<td> Dropped ISBN Records: </td>
+						<td>0</td>
+				</tr>
+				<td> Total Records in a File: </td>
+				<td>20271</td>
+				<td> ISBN records Processed in RPS: </td>
+				<td>6187</td>
+				</tr>
+			</table></td>
+			</tr>
 			</table>
 		</div>
 		<div style="font-size:small">
-			ver. 1.5.5435.24663
+			ver. 1.5.5436.19082
 		</div>
 	</body>
 </html>
