@@ -42,3 +42,5 @@ gem 'activemerchant'
 
 # time zone
 gem 'tzinfo-data'
+
+gem 'rails_12factor', group: :production
