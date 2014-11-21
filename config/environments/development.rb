@@ -50,6 +50,10 @@ Rails.application.configure do
   #paypal settings
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test
+    
+   
+    
+    #working UAT version
     paypal_options = {
       login: "unlockphn-facilitator_api1.gmail.com",
       password: "RJWALPP35SPBRM6B",

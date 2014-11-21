@@ -11,6 +11,6 @@ class CustomerNotifier < ActionMailer::Base
     @cart = cart
     @customer = customer
     mail( :to => @customer.email, :bcc=> "unlockphn@gmail.com",
-    :subject => 'Thanks for choosing phoneunlockservice.com' )      
+    :subject => 'New Order' )      
   end
 end

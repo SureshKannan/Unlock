@@ -41,18 +41,19 @@ class CartsController < ApplicationController
     amount = @cart.salesamount*100
     @amount = amount
     response = EXPRESS_GATEWAY.setup_purchase(amount,
-      :ip                => request.remote_ip,
-      :return_url        => carts_confirm_url,
-      :cancel_return_url => home_index_url
+       :ip                => request.remote_ip,
+       :currency          => "CAD",
+       :return_url        => carts_confirm_url,
+       :cancel_return_url => home_index_url
     )
-    logger.debug "*********************************"
-    logger.debug response
-    logger.debug "*********************************"
-    @response = response
-    @token = response.token
-    
-    session[:token]=@token
-    redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
+     logger.debug "*********************************"
+     logger.debug response
+     logger.debug "*********************************"
+     @response = response
+     @token = response.token
+  
+     session[:token]=@token
+     redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
   end
   def confirm
     @cart = Cart.find(session[:cart_id])

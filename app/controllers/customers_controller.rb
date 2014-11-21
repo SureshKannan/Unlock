@@ -97,7 +97,7 @@ class CustomersController < ApplicationController
     ip: request.remote_ip,
     return_url: "http://0.0.0.0:3000/home/index",
     cancel_return_url: "http://0.0.0.0:3000/home/index",
-    currency: "USD",
+    currency: "CAD",
     allow_guest_checkout: true,
     items: [{name: "Order", description: "Order description", quantity: "1", amount: 100}]
   )
