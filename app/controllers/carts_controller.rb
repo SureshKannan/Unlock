@@ -53,7 +53,7 @@ class CartsController < ApplicationController
      @token = response.token
   
      session[:token]=@token
-     redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
+     #redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
   end
   def confirm
     @cart = Cart.find(session[:cart_id])

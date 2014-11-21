@@ -49,16 +49,21 @@ Rails.application.configure do
   
   #paypal settings
   config.after_initialize do
-    ActiveMerchant::Billing::Base.mode = :test
+    ActiveMerchant::Billing::Base.mode = :production
     
-   
-    
-    #working UAT version
-    paypal_options = {
-      login: "unlockphn-facilitator_api1.gmail.com",
-      password: "RJWALPP35SPBRM6B",
-      signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31AZsJy45PfFnCMB0AwpgQWUaM21bF"
+   paypal_options = {
+      login: "unlockphn_api1.gmail.com",
+      password: "NNBJC9MB3SPAGEXX",
+      signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31AD5Dl-c93CvsXCAWoG1pwono4XwU"
     }
+
+    
+    # #working UAT version
+    # paypal_options = {
+      # login: "unlockphn-facilitator_api1.gmail.com",
+      # password: "RJWALPP35SPBRM6B",
+      # signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31AZsJy45PfFnCMB0AwpgQWUaM21bF"
+    # }
     
     # paypal_options = {
       # login: "skannan-facilitator_api1.fourus.ca",
