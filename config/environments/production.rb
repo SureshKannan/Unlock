@@ -83,8 +83,8 @@ Rails.application.configure do
   #smtp mail settings
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
-    :user_name => 'support@PhoneUnlockService.com',
-    :password => 'R@cky118',
+    :user_name => 'app31746107@heroku.com',
+    :password => 'uymbkmor',
     :domain => 'phoneunlockserviceco.netfirms.com',
     :address => 'smtp.sendgrid.net',
     :port => 587,
