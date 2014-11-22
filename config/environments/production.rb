@@ -86,7 +86,7 @@ Rails.application.configure do
     :user_name => 'support@PhoneUnlockService.com',
     :password => 'R@cky118',
     :domain => 'phoneunlockserviceco.netfirms.com',
-    :address => 'phoneunlockserviceco.netfirms.com',
+    :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,
     :enable_starttls_auto => true,
