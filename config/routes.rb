@@ -59,6 +59,8 @@ Rails.application.routes.draw do
      # post "index", to: "customers#index"
   # end
   
+  root 'home#index'
+  
   controller :home do
     get "home/index"
     post "home/index", to: "customers#index"
