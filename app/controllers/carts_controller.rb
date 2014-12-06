@@ -1,32 +1,33 @@
 class CartsController < ApplicationController
   def create
     @cart = current_cart
+    logger.debug "****cart id #{@cart.id} **********"
     logger.debug "**User ID #{session[:cart_id]}  *************"     
     @cartitem = Cartlineitem.new(:cart_id=>@cart.id,:product_id=>params[:product_id], :imei => params[:txtImei],:quantity=>1, :price => params[:price], :amount=> params[:price],:orderstatus_id=>1)
     #@cartitem = @cart.cartlineitems.build(:product_id=>params[:product_id], :imei => params[:txtImei],:quantity=>1, :price => params[:price], :amount=> params[:price],:orderstatus_id=>1,:comments=>"",:status=>"")
     if @cartitem.save then 
       @cart.cartlineitems << @cartitem
     end
-    if params[:cmdContinue] then
-        redirect_to action: 'index'
-    else
-        if session[:customer_id].nil? == false then
-          @cart.customer_id = session[:customer_id]
-          @cart.save
-
-          #updating the invoice total
-          @totalamount=0
-          @cart.cartlineitems.each do |p|
-            @totalamount = @totalamount + p.amount
-          end
-          @cart.salesamount = @totalamount
-          @cart.save
-                
-          redirect_to carts_show_url
-        else
-          redirect_to customers_index_url
-        end 
-    end    
+    # if params[:cmdContinue] then
+        # redirect_to action: 'index'
+    # else
+        # if session[:customer_id].nil? == false then
+          # @cart.customer_id = session[:customer_id]
+          # @cart.save
+# 
+          # #updating the invoice total
+          # @totalamount=0
+          # @cart.cartlineitems.each do |p|
+            # @totalamount = @totalamount + p.amount
+          # end
+          # @cart.salesamount = @totalamount
+          # @cart.save
+#                 
+          # redirect_to carts_show_url
+        # else
+          # redirect_to customers_index_url
+        # end 
+    # end    
   end
   
   def show
