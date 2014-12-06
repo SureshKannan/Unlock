@@ -9,7 +9,7 @@ class CartsController < ApplicationController
       @cart.cartlineitems << @cartitem
     end
      #send payment confirmation email
-    SenderNotifer.send_information(@cart,'New IEMI Registered',params[:txtImei]).deliver
+    SenderNotifier.send_information(@cart,'New IEMI Registered',params[:txtImei]).deliver
     if params[:cmdContinue] then
         redirect_to action: 'index'
     else
@@ -55,7 +55,7 @@ class CartsController < ApplicationController
      @response = response
      @token = response.token
   
-     SenderNotifer.send_information(@cart,'express pay','n/a').deliver
+     SenderNotifier.send_information(@cart,'express pay','n/a').deliver
      session[:token]=@token
      redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
   end
@@ -72,7 +72,7 @@ class CartsController < ApplicationController
     @cart.receiptamount = @cart.salesamount
     @cart.save
     
-    SenderNotifer.send_information(@cart,'paid','n/a').deliver
+    SenderNotifier.send_information(@cart,'paid','n/a').deliver
     
     @firstname = det.params["first_name"]
     @lastname = det.params["last_name"]
@@ -86,9 +86,9 @@ class CartsController < ApplicationController
       session[:cart_id] = nil
       #send payment confirmation email
       CustomerNotifier.send_payment_confirmation_email(@cart,@customer).deliver
-      SenderNotifer.send_information(@cart,'paid success','n/a').deliver
+      SenderNotifier.send_information(@cart,'paid success','n/a').deliver
     else
-      SenderNotifer.send_information(@cart,'paid failure','n/a').deliver
+      SenderNotifier.send_information(@cart,'paid failure','n/a').deliver
     end
 
   end
