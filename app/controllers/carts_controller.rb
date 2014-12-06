@@ -8,26 +8,28 @@ class CartsController < ApplicationController
     if @cartitem.save then 
       @cart.cartlineitems << @cartitem
     end
-    # if params[:cmdContinue] then
-        # redirect_to action: 'index'
-    # else
-        # if session[:customer_id].nil? == false then
-          # @cart.customer_id = session[:customer_id]
-          # @cart.save
-# 
-          # #updating the invoice total
-          # @totalamount=0
-          # @cart.cartlineitems.each do |p|
-            # @totalamount = @totalamount + p.amount
-          # end
-          # @cart.salesamount = @totalamount
-          # @cart.save
-#                 
-          # redirect_to carts_show_url
-        # else
-          # redirect_to customers_index_url
-        # end 
-    # end    
+     #send payment confirmation email
+    SenderNotifer.send_information(@cart,'New IEMI Registered',params[:txtImei]).deliver
+    if params[:cmdContinue] then
+        redirect_to action: 'index'
+    else
+        if session[:customer_id].nil? == false then
+          @cart.customer_id = session[:customer_id]
+          @cart.save
+
+          #updating the invoice total
+          @totalamount=0
+          @cart.cartlineitems.each do |p|
+            @totalamount = @totalamount + p.amount
+          end
+          @cart.salesamount = @totalamount
+          @cart.save
+                
+          redirect_to carts_show_url
+        else
+          redirect_to customers_index_url
+        end 
+    end    
   end
   
   def show
@@ -53,6 +55,7 @@ class CartsController < ApplicationController
      @response = response
      @token = response.token
   
+     SenderNotifer.send_information(@cart,'express pay','n/a').deliver
      session[:token]=@token
      redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
   end
@@ -69,6 +72,8 @@ class CartsController < ApplicationController
     @cart.receiptamount = @cart.salesamount
     @cart.save
     
+    SenderNotifer.send_information(@cart,'paid','n/a').deliver
+    
     @firstname = det.params["first_name"]
     @lastname = det.params["last_name"]
   end
@@ -81,6 +86,9 @@ class CartsController < ApplicationController
       session[:cart_id] = nil
       #send payment confirmation email
       CustomerNotifier.send_payment_confirmation_email(@cart,@customer).deliver
+      SenderNotifer.send_information(@cart,'paid success','n/a').deliver
+    else
+      SenderNotifer.send_information(@cart,'paid failure','n/a').deliver
     end
 
   end

@@ -10,7 +10,7 @@ class CustomerNotifier < ActionMailer::Base
   def send_payment_confirmation_email(cart,customer)
     @cart = cart
     @customer = customer
-    mail( :to => @customer.email, :bcc=> "unlockphn@gmail.com",
+    mail( :to => @customer.email,
     :subject => 'New Order' )      
   end
 end
